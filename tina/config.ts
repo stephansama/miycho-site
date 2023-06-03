@@ -13,7 +13,7 @@ export default defineConfig({
 	},
 	media: {
 		tina: {
-			mediaRoot: '',
+			mediaRoot: 'images',
 			publicFolder: 'static'
 		}
 	},
@@ -23,6 +23,11 @@ export default defineConfig({
 				name: 'post',
 				label: 'Posts',
 				path: 'content/posts',
+				ui: {
+					global: true,
+					allowedActions: { create: false, delete: false }
+				},
+				format: 'json',
 				fields: [
 					{
 						type: 'string',

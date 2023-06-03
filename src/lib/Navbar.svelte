@@ -8,7 +8,7 @@
 <AppRail class="max-sm:hidden">
 	<svelte:fragment slot="lead">
 		<AppRailAnchor href="#">
-			<img src="/miycho.png" alt="test" />
+			<img src="/images/miycho.png" alt="test" />
 		</AppRailAnchor>
 	</svelte:fragment>
 	{#each sections as section, value}

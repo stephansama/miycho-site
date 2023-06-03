@@ -2,7 +2,7 @@
 
 [build]
     publish="dist/"
-    command="vite build"
+    command="tinacms build && vite build"
     NODE_ENV="production"
     functions="./serverless"
     environment = { NODE_VERSION = "v16.19.0" }

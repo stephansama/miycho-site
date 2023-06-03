@@ -1,6 +1,13 @@
+# https://docs.netlify.com/configure-builds/file-based-configuration/
+
 [build]
     publish="dist/"
     command="vite build"
     NODE_ENV="production"
     functions="./serverless"
     environment = { NODE_VERSION = "v16.19.0" }
+
+# TinaCMS Redirect
+[[redirects]]
+  from = "/admin"
+  to = "/admin/index.html"

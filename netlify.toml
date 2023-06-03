@@ -8,6 +8,6 @@
     environment = { NODE_VERSION = "v16.19.0" }
 
 # TinaCMS Redirect
-[[redirects]]
+[[_redirects]]
   from = "/admin"
   to = "/admin/index.html"

@@ -2,6 +2,7 @@
 	"name": "miycho-site",
 	"version": "0.0.1",
 	"private": true,
+	"type": "module",
 	"scripts": {
 		"dev": "tinacms dev -c \"vite dev\"",
 		"build": "tinacms build && vite build",
@@ -34,7 +35,6 @@
 		"typescript": "^5.0.0",
 		"vite": "^4.3.0"
 	},
-	"type": "module",
 	"dependencies": {
 		"@tinacms/cli": "^1.5.16",
 		"tinacms": "^1.5.8"

@@ -1,0 +1,43 @@
+---
+import Base from "@layouts/Base.astro";
+import client from "@tina-generated/client";
+import Renderer from "@components/Renderer.astro";
+
+export async function getStaticPaths() {
+	const pageListData = await client.queries.pageConnection();
+	const tinaPages =
+		pageListData?.data?.pageConnection?.edges?.map(
+			(p) => p?.node?._sys?.filename
+		) ?? [];
+	// undefined returns index page
+	return [...tinaPages, undefined].map((page) => ({
+		params: { page },
+	}));
+}
+
+const { page } = Astro.params;
+const relativePath = `${page ?? "index"}.json`;
+const data = await (async () => {
+	try {
+		return await client.queries.page({ relativePath });
+	} catch (e) {
+		return (console.log(e), null);
+	}
+})();
+
+if (!data) {
+	return Astro.redirect("/404");
+}
+
+const {
+	data: {
+		page: { seo, title, sections },
+	},
+} = data;
+
+const { description, noFollow, noIndex, ogImage } = seo || {};
+---
+
+<Base {title} {description} {noFollow} {noIndex} image={ogImage}>
+	<Renderer {sections} />
+</Base>

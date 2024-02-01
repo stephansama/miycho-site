@@ -1,0 +1,17 @@
+{
+  "header": {
+    "nav": [
+      {
+        "href": "",
+        "label": "Home"
+      }
+    ]
+  },
+  "footer": {
+    "social_links": [
+      {
+        "social": "content/socials/github.json"
+      }
+    ]
+  }
+}

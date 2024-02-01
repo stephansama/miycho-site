@@ -1,0 +1,24 @@
+---
+import * as AstroComponents from ".";
+import type {
+	PageSectionsHeroSection,
+	PageSectionsRichText,
+} from "@tina-generated/types";
+
+type SectionTypes = PageSectionsHeroSection | PageSectionsRichText;
+
+const { sections } = Astro.props as { sections: SectionTypes[] };
+console.log(sections);
+---
+
+{
+	sections?.map((section) => {
+		const { __typename: name = "" } = section;
+		const currentBlock = name?.replace("PageSections", "");
+		const DynamicComponent =
+			AstroComponents[currentBlock as keyof typeof AstroComponents];
+		if (!DynamicComponent)
+			return console.log("Component not found with name of ", currentBlock);
+		return <DynamicComponent {...section} />;
+	})
+}

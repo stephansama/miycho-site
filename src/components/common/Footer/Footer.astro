@@ -1,0 +1,38 @@
+---
+// https://tailwindui.com/components/marketing/sections/footers
+import { author } from "@pkg";
+import type { GlobalQuery } from "@tina-generated/types";
+import { IconifyIcon } from "..";
+const props = Astro.props as GlobalQuery["global"]["footer"];
+if (!props) {
+	return null;
+}
+const { social_links } = props;
+---
+
+<footer>
+	<div
+		class="mx-auto max-w-7xl px-6 py-12 md:flex md:items-center md:justify-between lg:px-8"
+	>
+		<div class="flex justify-center space-x-6 md:order-2">
+			{
+				social_links?.map((link) => (
+					<a href={link?.link} target="_blank" rel="noreferrer">
+						<span class="sr-only">{link?.social_media}</span>
+						<IconifyIcon
+							pack="simple-icons"
+							name={link?.social_media?.toLowerCase()}
+						/>
+					</a>
+				))
+			}
+		</div>
+		<div class="mt-8 md:order-1 md:mt-0">
+			<p class="text-center text-xs leading-5 text-gray-200">
+				&copy; {new Date().getFullYear()} Created By
+				<a href={author.url} class="underline"> Stephan Randle</a>. All rights
+				reserved.
+			</p>
+		</div>
+	</div>
+</footer>

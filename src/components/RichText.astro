@@ -1,0 +1,15 @@
+---
+import { TinaMarkdown } from "tinacms/dist/rich-text";
+import type { PageSectionsRichText } from "@tina-generated/types";
+const {
+	body: content,
+	title,
+	showTitle,
+	//
+} = Astro.props as PageSectionsRichText;
+---
+
+<div class="prose dark:prose-invert">
+	{showTitle && <h1>{title}</h1>}
+	<TinaMarkdown {content} />
+</div>

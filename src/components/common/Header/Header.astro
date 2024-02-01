@@ -1,0 +1,23 @@
+---
+// https://tailwindui.com/components/application-ui/navigation/navbars
+import { displayName } from "@pkg";
+import type { GlobalQuery } from "@tina-generated/types";
+const props = Astro.props as GlobalQuery["global"]["header"];
+if (!props) {
+	return null;
+}
+const { name, nav } = props;
+---
+
+<nav class="flex items-center z-30 h-16">
+	{name || displayName}
+	<ul class="flex gap-3">
+		{
+			nav?.map((item) => (
+				<li>
+					<a href={`/${item?.href}`}>{item?.label}</a>
+				</li>
+			))
+		}
+	</ul>
+</nav>

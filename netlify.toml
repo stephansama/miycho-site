@@ -1,0 +1,25 @@
+# https://docs.netlify.com/configure-builds/file-based-configuration/
+
+[dev]
+    framework = "astro"
+    functions = "serverless/"
+    targetPort = 4321
+
+[build]
+    publish="dist/"
+    command="pnpm build"
+    NODE_ENV="production"
+    functions="serverless/"
+    environment = { NODE_VERSION = "v18.17.0" }
+
+[[redirects]]
+  from = "/index"
+  to = "/"
+
+[[redirects]]
+  from = "/admin/index"
+  to = "/admin/index.html"
+
+[[redirects]]
+  from = "/admin"
+  to = "/admin/index.html"

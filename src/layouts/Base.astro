@@ -1,0 +1,45 @@
+---
+import client from "@tina-generated/client";
+import { cn } from "@lib/utility";
+import { ViewTransitions } from "astro:transitions";
+import {
+	SEO,
+	Header,
+	Footer,
+	BackToTop,
+	DarkmodeScript,
+	type SEOProps,
+} from "@common/index";
+import "@styles/_main.pcss";
+
+const data = await (async () => {
+	try {
+		return await client.queries.global({ relativePath: "index.json" });
+	} catch (e) {
+		return (console.log(e), null);
+	}
+})();
+
+const seoProps = Astro.props as SEOProps;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<DarkmodeScript />
+		<SEO {...seoProps} />
+		<script src="@lib/core"></script>
+		<script
+			data-goatcounter={import.meta.env.GOAT_COUNTER_ID}
+			async
+			src="//gc.zgo.at/count.js"
+		></script>
+		<ViewTransitions />
+	</head>
+	<body class={cn({ "debug-screens": import.meta.env.DEV })}>
+		<Header {...data?.data?.global?.header} />
+		<main><slot /></main>
+		<Footer {...data?.data?.global?.footer} />
+		<BackToTop />
+	</body>
+</html>

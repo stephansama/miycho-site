@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import { fontFamily } from "tailwindcss/defaultTheme";
 import { addDynamicIconSelectors } from "@iconify/tailwind";
 import scrollbar from "tailwind-scrollbar";
 
@@ -7,6 +8,9 @@ export default {
 	content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
 	theme: {
 		extend: {
+			fontFamily: {
+				sans: ["Rubik Mono One", ...fontFamily.sans],
+			},
 			colors: {
 				primary: "#fff",
 				secondary: "#fff",

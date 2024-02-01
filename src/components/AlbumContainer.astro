@@ -1,0 +1,21 @@
+---
+import type { PageSectionsAlbumContainer } from "@tina-generated/types";
+import Album from "./Album.astro";
+const {
+	album,
+	//
+} = Astro.props as PageSectionsAlbumContainer;
+---
+
+<div class="grid grid-cols-8 md:gap-4 md:grid-cols-12 gap-2">
+	{
+		album?.map(
+			(item) =>
+				item?.albumReference && (
+					<div class="col-span-4">
+						<Album {...item.albumReference} />
+					</div>
+				)
+		)
+	}
+</div>

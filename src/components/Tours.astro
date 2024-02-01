@@ -1,0 +1,24 @@
+---
+import type { PageSectionsTours } from "@tina-generated/types";
+const {
+	tourInformation,
+	//
+} = Astro.props as PageSectionsTours;
+---
+
+<div class="md:my-auto">
+	<ul class="list-disc pl-4">
+		{
+			tourInformation?.map((tour) => (
+				<li>
+					<a href={tour?.link}>
+						<time>
+							{tour?.date && new Date(tour?.date).toLocaleDateString("en-US")}
+						</time>
+						<span>{tour?.location && tour.location}</span>
+					</a>
+				</li>
+			))
+		}
+	</ul>
+</div>

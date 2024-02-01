@@ -1,0 +1,26 @@
+---
+import { Image } from "astro:assets";
+import type { Album } from "@tina-generated/types";
+const {
+	title,
+	description,
+	albumArt,
+	//
+} = Astro.props as Album;
+---
+
+<div>
+	<h3>{title}</h3>
+	<span>{description}</span>
+	{
+		albumArt && (
+			<Image
+				src={albumArt || ""}
+				alt={title || ""}
+				width={100}
+				height={100}
+				class="size-full"
+			/>
+		)
+	}
+</div>

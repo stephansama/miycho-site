@@ -1,0 +1,15 @@
+{
+  "title": "Tour",
+  "sections": [
+    {
+      "tourInformation": [
+        {
+          "date": "2024-02-14T05:00:00.000Z",
+          "location": "SFL Listening Party",
+          "link": "https://www.songkick.com/festivals/876-coachella/id/41207318-coachella-2024?utm_source=46422&utm_medium=partner"
+        }
+      ],
+      "_template": "tours"
+    }
+  ]
+}

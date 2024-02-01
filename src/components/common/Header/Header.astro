@@ -1,23 +1,46 @@
 ---
 // https://tailwindui.com/components/application-ui/navigation/navbars
 import { displayName } from "@pkg";
+import { Image } from "astro:assets";
 import type { GlobalQuery } from "@tina-generated/types";
+import { cn } from "@lib/utility";
 const props = Astro.props as GlobalQuery["global"]["header"];
 if (!props) {
 	return null;
 }
-const { name, nav } = props;
+const { pathname } = Astro.url;
+// console.log(url);
+const { name, nav, image } = props;
 ---
 
-<nav class="flex items-center z-30 h-16">
-	{name || displayName}
-	<ul class="flex gap-3">
+<nav class="md:col-span-4 col-span-12 z-0 p-4 md:flex-grow md:flex md:flex-col">
+	<a href="/" class="mx-auto" transition:persist>
+		<Image src={image as string} alt="header" width={100} height={100} />
+	</a>
+	<ul class="flex flex-col my-auto lg:text-5xl md:text-4xl xl:text-6xl">
 		{
-			nav?.map((item) => (
-				<li>
-					<a href={`/${item?.href}`}>{item?.label}</a>
-				</li>
-			))
+			nav?.map((item) => {
+				const href = `/${item?.page?._sys.filename}`;
+				return (
+					<li class="flex items-center gap-2 md:gap-4">
+						<a {href}>{item?.label}</a>
+						{href === pathname && (
+							<Image
+								src="/media/diamond-spinning.gif"
+								alt=""
+								class="-mt-2 size-4 md:-mt-4 md:inline-flex md:size-10"
+								width={100}
+								height={100}
+							/>
+						)}
+					</li>
+				);
+			})
 		}
 	</ul>
 </nav>
+
+<style>
+	li.active {
+	}
+</style>

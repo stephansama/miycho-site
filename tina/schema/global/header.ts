@@ -6,6 +6,7 @@ const header: TinaField = {
 	type: "object",
 	fields: [
 		{ type: "string", label: "Name", name: "name" },
+		{ type: "image", label: "Image", name: "image" },
 		{
 			type: "object",
 			label: "Nav Links",
@@ -16,7 +17,12 @@ const header: TinaField = {
 				defaultItem: { href: "home", label: "Home" },
 			},
 			fields: [
-				{ type: "string", label: "Link", name: "href" },
+				{
+					type: "reference",
+					label: "Page",
+					name: "page",
+					collections: ["page"],
+				},
 				{ type: "string", label: "Label", name: "label" },
 			],
 		},

@@ -3,10 +3,10 @@
 		@apply scroll-smooth antialiased;
 	}
 	body {
-		@apply flex min-h-screen flex-col dark:bg-zinc-900 dark:text-zinc-50;
+		@apply relative grid min-h-screen grid-cols-12 md:overflow-hidden dark:bg-zinc-900 dark:text-zinc-50;
 	}
 	main {
-		@apply -mt-16 flex min-h-screen flex-grow flex-col pt-16;
+		@apply col-span-12 flex min-h-screen flex-col md:col-span-8 md:max-h-screen md:overflow-y-scroll;
 	}
 	/* disallow copying/dragging images */
 	img,

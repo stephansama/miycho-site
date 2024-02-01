@@ -1,11 +1,19 @@
 ---
 import type { PageSectionsHeroSection } from "@tina-generated/types";
+import { Image } from "astro:assets";
 const {
 	title,
 	subtitle,
 	social_links,
+	background,
 	//
 } = Astro.props as PageSectionsHeroSection;
 ---
 
-Hero Section my guy
+<Image
+	src={background as string}
+	alt=""
+	width={100}
+	height={100}
+	class="size-[80%] mx-auto md:m-auto object-contain"
+/>

@@ -1,9 +1,22 @@
 {
   "header": {
+    "image": "/media/miycho.png",
     "nav": [
       {
-        "href": "",
-        "label": "Home"
+        "page": "content/pages/music.json",
+        "label": "Music"
+      },
+      {
+        "page": "content/pages/videos.json",
+        "label": "Videos"
+      },
+      {
+        "page": "content/pages/tour.json",
+        "label": "Tour"
+      },
+      {
+        "page": "content/pages/contact.json",
+        "label": "Email"
       }
     ]
   },

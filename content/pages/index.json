@@ -1,4 +1,11 @@
 {
+  "description": "Homepage",
   "title": "Index",
-  "description": "Homepage"
+  "sections": [
+    {
+      "title": "Hero Section",
+      "background": "/media/miychored.png",
+      "_template": "heroSection"
+    }
+  ]
 }

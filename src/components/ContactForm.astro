@@ -1,0 +1,58 @@
+---
+import type { PageSectionsContactForm } from "@tina-generated/types";
+const {
+	title,
+	subtitle,
+	//
+} = Astro.props as PageSectionsContactForm;
+---
+
+<div class="max-w-3xl md:m-auto">
+	<h3 class="text-xl text-center">
+		{title}
+		<span data-gsa="bounce" class="inline-flex">👇🏽</span>
+	</h3>
+	<form class="flex flex-col gap-3" id="contact-form">
+		<input type="text" name="name" placeholder="Name" id="name" />
+		<input type="text" name="email" placeholder="Email" id="email" />
+		<textarea name="message" placeholder="Message" id="message"></textarea>
+		<button type="submit" class="uppercase font-extrabold">{subtitle}</button>
+	</form>
+</div>
+
+<script>
+	import { registerToDOM } from "@lib/utility";
+
+	registerToDOM(() => {
+		const form = document.getElementById("contact-form") as HTMLFormElement;
+		form?.addEventListener("submit", (e) => {
+			e.preventDefault();
+			const formData = new FormData(form);
+			const name = formData.get("name");
+			const email = formData.get("email");
+			const message = formData.get("message");
+			const contactEmail = "stephanrandle.dev@gmail.com";
+			const missingFields = Object.entries({ name, message, email })
+				.reduce(
+					(prev, [name, val]) => [...prev, !val && name],
+					[] as (string | false)[]
+				)
+				.filter(Boolean)
+				.map((field) => field && field[0].toUpperCase() + field.slice(1));
+			if (missingFields.length)
+				return alert(
+					`Please fill in all the fields.\nMissing fields: ${missingFields.join(
+						", "
+					)}`
+				);
+			const url = `mailto:${contactEmail}
+			?subject=Programming inquiry for Stephan Randle - ${new Date().toLocaleDateString(
+				"en-US"
+			)}
+			&body=${message}%0D%0A%0D%0A
+			—Sincerely,%0D%0A
+			${name}`;
+			window.open(url, "_blank");
+		});
+	});
+</script>

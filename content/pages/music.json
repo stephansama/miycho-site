@@ -1,0 +1,34 @@
+{
+	"title": "Music",
+	"sections": [
+		{
+			"album": [
+				{
+					"albumReference": "content/album/psycho-talk.json"
+				},
+				{
+					"albumReference": "content/album/psycho-talk.json"
+				},
+				{
+					"albumReference": "content/album/psycho-talk.json"
+				},
+				{
+					"albumReference": "content/album/psycho-talk.json"
+				},
+				{
+					"albumReference": "content/album/psycho-talk.json"
+				},
+				{
+					"albumReference": "content/album/psycho-talk.json"
+				},
+				{
+					"albumReference": "content/album/psycho-talk.json"
+				},
+				{
+					"albumReference": "content/album/psycho-talk.json"
+				}
+			],
+			"_template": "albumContainer"
+		}
+	]
+}

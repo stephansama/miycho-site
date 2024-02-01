@@ -17,8 +17,8 @@
 	},
 	"scripts": {
 		"dev": "tinacms dev -c \"astro dev --host\"",
-		"start": "astro dev",
-		"build": "astro check && astro build",
+		"start": "tinacms build && astro dev",
+		"build": "tinacms build && astro check && astro build",
 		"preview": "netlify dev",
 		"astro": "astro"
 	},

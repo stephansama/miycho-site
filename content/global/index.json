@@ -3,7 +3,7 @@
     "image": "/media/miycho.png",
     "nav": [
       {
-        "page": "content/pages/music.json",
+        "page": "content/pages/tour.json",
         "label": "Music"
       },
       {
